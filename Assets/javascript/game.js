@@ -3,6 +3,10 @@ let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 let alreadyGuessed = []
 let cpuChoice = randomLetter();
 
+function randomLetter(){
+    return letters[Math.floor(Math.random() * letters.length)];
+}
+
 document.onkeyup = function(event) {
     let userChoice = event.key.toLowerCase();
     let guessesLeft = document.getElementById("guessesLeft");
@@ -31,8 +35,4 @@ document.onkeyup = function(event) {
     console.log(userChoice);
     console.log(cpuChoice);
     
-}
-
-function randomLetter(){
-    return letters[Math.floor(Math.random() * letters.length)];
 }
