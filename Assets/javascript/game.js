@@ -4,11 +4,13 @@ let alreadyGuessed = []
 let cpuChoice = randomLetter();
 
 document.onkeyup = function(event) {
-    let userChoice = event.key;
+    let userChoice = event.key.toLowerCase();
     let guessesLeft = document.getElementById("guessesLeft");
     alreadyGuessed.push(userChoice);
+    let guesses = document.getElementById("guessesSoFar");
+    let preValue = guesses.innerText;
+    guesses.innerText = preValue + " " + userChoice;
 
-    
     if (userChoice === cpuChoice){
         document.getElementById("wins").innerText++;
         guessesLeft.innerText = 10;
@@ -21,15 +23,10 @@ document.onkeyup = function(event) {
         guessesLeft.innerText = 9;
         cpuChoice = randomLetter();
         document.getElementById("guessesSoFar").innerText = "";
+
     } else {
         document.getElementById("guessesLeft").innerText--;
     }    
-
-    let g = document.getElementById("guessesSoFar");
-
-    let preValue = g.innerText;
-
-    g.innerText = preValue + " " + userChoice;
 
     console.log(userChoice);
     console.log(cpuChoice);
