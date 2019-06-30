@@ -1,4 +1,4 @@
-let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"]
+let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 let alreadyGuessed = []
 let cpuChoice = randomLetter();
@@ -8,12 +8,16 @@ function randomLetter(){
 }
 
 document.onkeyup = function(event) {
+
     let userChoice = event.key.toLowerCase();
     let guessesLeft = document.getElementById("guessesLeft");
     alreadyGuessed.push(userChoice);
     let guesses = document.getElementById("guessesSoFar");
     let preValue = guesses.innerText;
-    guesses.innerText = preValue + " " + userChoice;
+   
+
+    if (letters.includes(userChoice) == true){
+        guesses.innerText = preValue + " " + userChoice;
 
     if (userChoice === cpuChoice){
         document.getElementById("wins").innerText++;
@@ -32,7 +36,10 @@ document.onkeyup = function(event) {
         document.getElementById("guessesLeft").innerText--;
     }    
 
+}
+
     console.log(userChoice);
     console.log(cpuChoice);
+    console.log(letters.includes(userChoice));
     
 }
